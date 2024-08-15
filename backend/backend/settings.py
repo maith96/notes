@@ -136,6 +136,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_ROOT = '/media/'
+
+MEDIA_ROOT = BASE_DIR / 'media'
+
+AVATARS_PATH = BASE_DIR / 'media/avatars'
+IDS_PATH = BASE_DIR / 'media/ids'
+OTHERS_PATH = BASE_DIR / 'media/others'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -144,3 +152,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWS_CREDENTIALS = True
+
+AUTH_USER_MODEL = 'api.CustomUser'
