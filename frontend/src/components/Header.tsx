@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -10,10 +10,15 @@ import {
   Link,
   Button,
 } from "@nextui-org/react";
+import api from "../api";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [res, setRes] = React.useState<any>();
 
+  useEffect(() => {
+    get_user_profile();
+  });
   const menuItems = [
     "Profile",
     "Dashboard",
@@ -26,6 +31,12 @@ export default function Header() {
     "Help & Feedback",
     "Log Out",
   ];
+
+  const get_user_profile = async () => {
+    // const resp = await api.get("/api/account/user-profile/");
+    // setRes(resp.data);
+    // console.log(resp);
+  };
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen}>
@@ -56,16 +67,26 @@ export default function Header() {
           </Link>
         </NavbarItem>
       </NavbarContent>
-      <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
-            Sign Up
-          </Button>
-        </NavbarItem>
-      </NavbarContent>
+      {res ? (
+        <div>{res}</div>
+      ) : (
+        <NavbarContent justify="end">
+          <NavbarItem className="hidden lg:flex">
+            <Link href="#">Login</Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Button
+              onClick={() => get_user_profile()}
+              as={Link}
+              color="primary"
+              href="#"
+              variant="flat"
+            >
+              Sign Up
+            </Button>
+          </NavbarItem>
+        </NavbarContent>
+      )}
       <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>

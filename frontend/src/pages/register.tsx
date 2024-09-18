@@ -35,7 +35,7 @@ export default function Register() {
       <Card className="max-w-md mx-auto mt-10">
         <CardBody>
           <form onSubmit={handleSubmit} className=" flex flex-col gap-4">
-            <h1 className="text-2xl text-center font-bold mb-10">Login</h1>
+            <h1 className="text-2xl text-center font-bold mb-10">Register</h1>
             <Input
               type="username"
               label="Username"

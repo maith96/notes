@@ -6,7 +6,7 @@ import { Button, Input } from "@nextui-org/react";
 import { Card, CardBody, CardFooter } from "@nextui-org/card";
 
 export default function Login() {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setIsLoading] = useState(false);
@@ -19,7 +19,7 @@ export default function Login() {
 
     try {
       const res = await api.post("/api/token/", {
-        username,
+        email,
         password,
       });
 
@@ -44,11 +44,11 @@ export default function Login() {
           <form onSubmit={handleSubmit} className=" flex flex-col gap-4">
             <h1 className="text-2xl text-center font-bold mb-10">Login</h1>
             <Input
-              type="username"
-              label="Username"
-              placeholder="Enter your username"
-              value={username}
-              onChange={(event) => setUsername(event.target.value)}
+              type="email"
+              label="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
             />
             <Input
               type="password"

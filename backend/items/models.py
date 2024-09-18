@@ -17,11 +17,12 @@ def get_national_id_path(instance, filename):
 
 # Base class for Items
 class Item(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     identifier = models.CharField(max_length=100)
     description = models.TextField()
     is_returned = models.BooleanField(default=False)
-    found_by = models.ForeignKey('api.CustomUser', on_delete=models.CASCADE, related_name='found_items')
-    lost_by = models.ForeignKey('api.CustomUser', blank=True, null=True, related_name='lost_items')
+    found_by = models.ForeignKey('api.CustomUser', on_delete=models.CASCADE, related_name='%(class)s_found_items')
+    lost_by = models.ForeignKey('api.CustomUser',on_delete=models.SET_NULL, blank=True, null=True, related_name='%(class)s_lost_items')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

@@ -56,6 +56,9 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     'corsheaders',
+    'items',
+    'funds',
+    
 ]
 
 MIDDLEWARE = [
@@ -141,8 +144,9 @@ MEDIA_ROOT = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 AVATARS_PATH = BASE_DIR / 'media/avatars'
-IDS_PATH = BASE_DIR / 'media/ids'
-OTHERS_PATH = BASE_DIR / 'media/others'
+MEDIA_URL = '/media/'
+
+# STATIC_ROOT = BASE_DIR / 'static'
 
 
 # Default primary key field type
